@@ -58,5 +58,5 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 - [Development Plan](../../wiki/Development%20Plan)
 
 ### Iterations
-- [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](../../projects/1)
+- [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/2?filterQuery=iteration+1)
 
