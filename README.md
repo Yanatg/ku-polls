@@ -33,3 +33,4 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 ### Iterations
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/2?filterQuery=iteration+1)
 
+[django-tutorial]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
