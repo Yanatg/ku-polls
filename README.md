@@ -11,39 +11,12 @@ Requires Python 3.9 or newer.  Required Python packages are listed in [requireme
 
 ## Install and Configure the Application
 
-See [Installation](../../wiki/Installation) in the project wiki.
+to be add.
 
 
 ## Running the Application
 
-1. Start the server in the virtual environment. 
-   ```
-   # activate the virtualenv for this project. On Linux or MacOS:
-   source env/bin/activate
-   # on MS Windows:
-   env\Scripts\activate
-
-   # start the django server
-   python3 manage.py runserver
-   ```
-   This starts a web server listening on port 8000.
-
-2. You should see this message printed in the terminal window:
-   ```
-   Starting development server at http://127.0.0.1:8000/
-   Quit the server with CONTROL-C.
-   ```
-   If you get a message that the port is unavailable, then run the server on a different port (1024 thru 65535) such as:
-   ```
-   python3 manage.py runserver 12345
-   ```
-
-3. In a web browser, navigate to <http://localhost:8000>
-
-4. To stop the server, press `CTRL-C` in the terminal window. Exit the virtual environment by closing the window or by typing:
-   ```
-   deactivate
-   ```
+to be add.
 
 ## Demo User Accounts
 
