@@ -11,16 +11,16 @@ Requires Python 3.9 or newer.  Required Python packages are listed in [requireme
 
 ## Install and Configure the Application
 
-to be add.
+to be added.
 
 
 ## Running the Application
 
-to be add.
+to be added.
 
 ## Demo User Accounts
 
-to be add.
+to be added.
 
 ## Project Documents
 
