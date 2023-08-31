@@ -8,6 +8,7 @@ from .models import Choice, Question
 
 
 class IndexView(generic.ListView):
+    """ Generic view for displaying a list of objects. """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -17,6 +18,7 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
+    """ Generic view for displaying a detail page for a particular type of object. """
     model = Question
     template_name = 'polls/detail.html'
 
@@ -28,11 +30,13 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
+    """ Generic view for displaying a detail page for a particular type of object. """
     model = Question
     template_name = 'polls/results.html'
 
 
 def vote(request, question_id):
+    """ View for voting on a question. """
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
