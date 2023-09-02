@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 </head>
 <body>
+<form>
+<h1 class="result-head">{{ question.question_text }}</h1>
 
-<h1>{{ question.question_text }}</h1>
-
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
+<ul class="result-choice">
+    {% for choice in question.choice_set.all %}
+        <div class="choice">
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        </div>
+    {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-
+<div class="vote-again"><a href="{% url 'polls:detail' question.id %}">Vote again?</a></div>
+</form>
 </body>
 </html>
