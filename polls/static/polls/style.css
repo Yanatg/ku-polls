@@ -1,7 +1,98 @@
-li a {
-    color: green;
-}
 
 body {
-    background: lightgoldenrodyellow url("images/background.jpeg") no-repeat;
+    background: white url("images/Bubbles.jpg") no-repeat;
+    background-size: cover;
+    font-family: 'Inconsolata', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    border-radius: 30px;
+    background: rgba(217, 217, 217, 0.50);
+    padding: 10px;
+    text-decoration: none;
+    margin: 30px;
+    list-style-type: none;
+}
+
+li a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: deeppink;
+}
+
+/* Style the form container */
+form {
+    width: 50%;
+    background-color: rgba(217, 217, 217, 0.50);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px 0 0 0;
+}
+
+fieldset {
+    border: none;
+}
+
+/* Style the legend heading */
+legend {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.choice {
+    background-color: rgba(217, 217, 217, 0.50);
+    border-radius: 10px;
+    border: solid 1px white;
+    margin-bottom: 10px;
+}
+
+/* Style the radio buttons and labels */
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/* Add some spacing between radio buttons and labels */
+label {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+label:hover {
+    transform: scale(1.1);
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #ff5ebf;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Change button color on hover */
+input[type="submit"]:hover {
+    background-color: #f2bda4;
+}
+
+h1.result-head {
+
+}
+
+.vote-again a {
+    color: #ff5ebf;
+    text-decoration: none;
+    font-size: 20px;
 }
