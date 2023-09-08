@@ -54,8 +54,8 @@ class ResultsView(generic.DetailView):
             self.object = self.get_object()
         except:
             return redirect('polls:index')
-        if not self.object.can_vote():
-            messages.error(request, 'You cannot vote on this question.')
+        if not self.object.is_published():
+            messages.error(request, 'This question is not available for voting.')
             return redirect('polls:index')
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
