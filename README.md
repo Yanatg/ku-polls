@@ -70,4 +70,6 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/2?filterQuery=iteration+1)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/3?filterQuery=iteration+2)
 
+[![Django CI](https://github.com/Yanatg/ku-polls/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/Yanatg/ku-polls/actions/workflows/django.yml)
+
 [django-tutorial]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
