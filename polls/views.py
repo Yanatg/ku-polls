@@ -13,15 +13,19 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions (not including those set to be
-        published in the future).
+        Return the last five published questions
+        (not including those set to be published in the future).
         """
         questions = get_available_questions()
-        return Question.objects.filter(pk__in=questions).order_by('-pub_date')[:5]
+        return Question.objects.filter(
+            pk__in=questions
+        ).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
-    """ Generic view for displaying a detail page for a particular type of object. """
+    """
+    Generic view for displaying a detail page for a particular type of object.
+    """
     model = Question
     template_name = 'polls/detail.html'
 
@@ -31,7 +35,8 @@ class DetailView(generic.DetailView):
         except:
             return redirect('polls:index')
         if not self.object.can_vote():
-            messages.error(request, 'This question is not available for voting.')
+            messages.error(request,
+                           'This question is not available for voting.')
             return redirect('polls:index')
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
@@ -45,7 +50,9 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
-    """ Generic view for displaying a detail page for a particular type of object. """
+    """
+    Generic view for displaying a detail page for a particular type of object.
+    """
     model = Question
     template_name = 'polls/results.html'
 
@@ -55,7 +62,8 @@ class ResultsView(generic.DetailView):
         except:
             return redirect('polls:index')
         if not self.object.is_published():
-            messages.error(request, 'This question is not available for voting.')
+            messages.error(request,
+                           'This question is not available for voting.')
             return redirect('polls:index')
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
@@ -82,10 +90,11 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return HttpResponseRedirect(
+            reverse('polls:results', args=(question.id,)))
 
 
 def get_available_questions():
-    """Returns a list of questions that are available for voting. """
+    """ Returns a list of questions that are available to view. """
     questions = Question.objects.all()
     return [q.id for q in questions if q.is_published()]
