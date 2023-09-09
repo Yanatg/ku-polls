@@ -7,18 +7,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 </head>
 <body>
-<form>
 <h1 class="result-head">{{ question.question_text }}</h1>
+<div class="form-container">
+    <form>
 
-<ul class="result-choice">
-    {% for choice in question.choice_set.all %}
-        <div class="choice">
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        <div class="poll-form">
+            <ul class="result-choice">
+                {% for choice in question.choice_set.all %}
+                    <li class="choice-result">
+                        <span class="choice-text">{{ choice.choice_text }}</span>
+                        <div class="vote-result">{{ choice.votes }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
-    {% endfor %}
-</ul>
-
-<div class="vote-again"><a href="{% url 'polls:detail' question.id %}">Vote again?</a></div>
-</form>
+        <div class="home-button"><a href="{% url 'polls:index' %}">Home</a></div>
+    </form>
+</div>
 </body>
 </html>
