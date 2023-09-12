@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ku polls | login</title>
+</head>
+<body>
+<h2>login</h2>
+<form method="Post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button type="submit">login</button>
+    </p>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>
+</body>
+</html>

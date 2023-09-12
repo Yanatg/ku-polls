@@ -11,6 +11,19 @@
 <body>
 
 <h1>KU Polls</h1>
+
+{% if user.is_authenticated %}
+    <div class="user-info">
+        <p>Welcome back, {{ user.username }}.</p>
+{#        <a href="{% url 'polls:logout' %}">Logout</a>#}
+    </div>
+{% else %}
+    <div class="user-info">
+        <p>Please login</p>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+{% endif %}
+
 {% if messages %}
     {% for message in messages %}
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
