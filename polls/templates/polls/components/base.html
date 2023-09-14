@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block site_title %}{% endblock %}KU Polls</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+{% include 'polls/components/site_header.html' %}
+{% block content %}{% endblock %}
+</body>
+</html>
