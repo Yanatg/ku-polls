@@ -120,7 +120,9 @@ def get_available_questions():
 
 def get_user_last_vote(user, question):
     """ Returns the last vote of a user for a question. """
-    try:
-        return Vote.objects.filter(user=user, choice__question=question).last()
-    except Vote.DoesNotExist:
-        return None
+    if user.is_authenticated:
+        try:
+            return Vote.objects.filter(user=user, choice__question=question).last()
+        except Vote.DoesNotExist:
+            return None
+    return None
