@@ -2,21 +2,27 @@
 {% load static %}
 {% block site_title %}results | {% endblock %}
 {% block content %}
-<h1 class="result-head">{{ question.question_text }}</h1>
-<div class="form-container">
-    <form>
-
-        <div class="poll-form">
-            <ul class="result-choice">
-                {% for choice in question.choice_set.all %}
-                    <li class="choice-result">
-                        <span class="choice-text">{{ choice.choice_text }}</span>
-                        <div class="vote-result">{{ choice.votes }}</div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="home-button" onclick="location.href='{% url 'polls:index' %}';"><a href="{% url 'polls:index' %}">Home</a></div>
-    </form>
-</div>
+    {% if messages %}
+        {% for message in messages %}
+            <li class="success">{{ message }}</li>
+        {% endfor %}
+    {% endif %}
+    <h1 class="result-head">{{ question.question_text }}</h1>
+    <div class="form-container">
+        <form>
+            <div class="poll-form">
+                <ul class="result-choice">
+                    {% for choice in question.choice_set.all %}
+                        <li class="choice-result">
+                            <span class="choice-text">{{ choice.choice_text }}</span>
+                            <div class="vote-result">{{ choice.votes }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="home-button"
+                 onclick="location.href='{% url 'polls:index' %}';"><a
+                    href="{% url 'polls:index' %}">Home</a></div>
+        </form>
+    </div>
 {% endblock %}
