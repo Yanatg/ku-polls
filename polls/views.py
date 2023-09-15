@@ -3,7 +3,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.contrib import messages
-from .models import Choice, Question
+from django.contrib.auth.decorators import login_required
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -38,7 +39,9 @@ class DetailView(generic.DetailView):
             messages.error(request,
                            'This question is not available for voting.')
             return redirect('polls:index')
-        context = self.get_context_data(object=self.object)
+        user_last_vote = get_user_last_vote(request.user, self.object)
+        context = self.get_context_data(object=self.object,
+                                        user_last_vote=user_last_vote)
         return self.render_to_response(context)
 
     def get_queryset(self):
@@ -76,9 +79,16 @@ class ResultsView(generic.DetailView):
         return Question.objects.filter(pk__in=questions)
 
 
+@login_required
 def vote(request, question_id):
     """ View for voting on a question. """
     question = get_object_or_404(Question, pk=question_id)
+
+    if not question.can_vote():
+        messages.error(request,
+                       'This question is not available for voting.')
+        return redirect('polls:index')
+
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
@@ -87,14 +97,30 @@ def vote(request, question_id):
             'question': question,
             'error_message': "You didn't select a choice.",
         })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(
-            reverse('polls:results', args=(question.id,)))
+    try:
+        # get the vote for this user and this question
+        vote = Vote.objects.get(user=request.user, choice__question=question)
+        # update the vote
+        vote.choice = selected_choice
+        vote.save()
+    except Vote.DoesNotExist:
+        Vote.objects.create(user=request.user, choice=selected_choice)
+    # vote.save()
+    messages.success(request, 'You have successfully voted.')
+
+    return HttpResponseRedirect(
+        reverse('polls:results', args=(question.id,)))
 
 
 def get_available_questions():
     """ Returns a list of questions that are available to view. """
     questions = Question.objects.all()
     return [q.id for q in questions if q.is_published()]
+
+
+def get_user_last_vote(user, question):
+    """ Returns the last vote of a user for a question. """
+    try:
+        return Vote.objects.filter(user=user, choice__question=question).last()
+    except Vote.DoesNotExist:
+        return None
