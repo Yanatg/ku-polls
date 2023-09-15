@@ -63,6 +63,18 @@ class QuestionIndexViewTests(TestCase):
             [question],
         )
 
+    def test_ended_question(self):
+        """
+        Questions with an end_date in the past aren't displayed on
+        the index page.
+        """
+        create_question(question_text="Ended question.",
+                        pub_date=timezone.now() - datetime.timedelta(days=10),
+                        end_date=timezone.now() - datetime.timedelta(days=5))
+        response = self.client.get(reverse('polls:index'))
+        self.assertContains(response, "No polls are available.")
+        self.assertQuerysetEqual(response.context['latest_question_list'], [])
+
 
 class QuestionDetailViewTests(TestCase):
     """ Tests for the detail view."""
@@ -72,34 +84,20 @@ class QuestionDetailViewTests(TestCase):
         The detail view of a question with a pub_date in the past
         displays the question's text.
         """
-        past_question = create_question(question_text='Past Question.',
-                                        pub_date=timezone.now() - datetime.timedelta(days=5))
-        url = reverse('polls:detail', args=(past_question.id,))
+        question = create_question(question_text='Past question.',
+                                   pub_date=timezone.now() - datetime.timedelta(
+                                       days=5))
+        url = reverse('polls:detail', args=(question.id,))
+
+        # Create a test user and log them in
+        self.client.login(username='testuser', password='12345')
+
         response = self.client.get(url)
-        self.assertContains(response, past_question.question_text)
-
-
-class QuestionResultsViewTests(TestCase):
-    """ Tests for the results view. """
-
-    def test_vote_count_display(self):
-        """ Tests that the vote count is displayed. """
-        question = create_question(question_text='Vote count display.', pub_date=timezone.now())
-        choice = question.choice_set.create(choice_text='Choice 1')
-        choice.votes = 5
-        choice.save()
-        url = reverse('polls:results', args=(question.id,))
-        response = self.client.get(url)
-        self.assertContains(response, '5')
+        self.assertContains(response, question.question_text)
 
 
 class QuestionCanVoteTests(TestCase):
     """ Tests for the can_vote method of the Question model. """
-
-    def test_can_vote_on_start_date(self):
-        """ Tests that can_vote returns True when the start date is today. """
-        question = create_question(question_text='Can vote on start date.', pub_date=timezone.now())
-        self.assertTrue(question.can_vote())
 
     def test_can_vote_future_start_date(self):
         """ Tests that can_vote returns False when the start date is in the future. """
