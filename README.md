@@ -54,9 +54,15 @@ python manage.py runserver
 deactivate
 ```
 
-## Demo User Accounts
+## Demo User
 
-to be added.
+use these username and password to login as a user.
+
+|Username| Password |
+|:------:|:--------:|
+|user1| lookatme1 |
+|user2| lookatme2 |
+
 
 ## Project Documents
 
