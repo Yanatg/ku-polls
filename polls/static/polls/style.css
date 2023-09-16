@@ -13,11 +13,20 @@ body {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 30px;
     color: #fff;
     text-align: left;
     margin-top: 20px;
     max-width: 900px;
+    margin-bottom: 10px;
+}
+
+.login-link {
+    color: #ffd8a6;
+}
+
+.login-link:hover {
+    color: #ff959e;
 }
 
 .polls-container {
@@ -96,6 +105,14 @@ h1 {
 
 .error {
     color: #ff959e;
+    font-size: 20px;
+    text-align: center;
+    list-style-type: none;
+    margin: 10px;
+}
+
+.success {
+    color: #ffd8a6;
     font-size: 20px;
     text-align: center;
     list-style-type: none;
@@ -237,4 +254,71 @@ label:hover {
 .home-button:hover {
     background-color: rgba(242, 187, 164, 0.5);
     transform: scale(1.05);
+}
+
+/*-------------------------*/
+
+.login-form {
+    width: 300px;
+    height: 350px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.29);
+    background: rgba(102, 102, 102, 0.07);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: white;
+    list-style: none;
+}
+
+.login-form label {
+    color: white;
+    font-size: 20px;
+}
+
+.login-form input[type="text"], input[type="password"] {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.73);
+}
+
+.login-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.login-button {
+    margin-top: 10px;
+    background-color: rgba(242, 164, 176, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.login-button:hover {
+    background-color: rgba(242, 187, 164, 0.5);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.header-label {
+    color: white;
+    font-size: 20px;
+}
+
+.error-login {
+    color: white;
+    list-style-type: none;
 }

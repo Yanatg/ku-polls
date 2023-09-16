@@ -54,9 +54,15 @@ python manage.py runserver
 deactivate
 ```
 
-## Demo User Accounts
+## Demo User
 
-to be added.
+use these username and password to login as a user.
+
+|Username| Password |
+|:------:|:--------:|
+|user1| lookatme1 |
+|user2| lookatme2 |
+
 
 ## Project Documents
 
@@ -69,6 +75,7 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 ### Iterations
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/2?filterQuery=iteration+1)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/3?filterQuery=iteration+2)
+- [Iteration 3 Plan](../../wiki/Iteration%203%20Plan) and [Task Board](https://github.com/users/Yanatg/projects/1/views/4?filterQuery=iteration+3)
 
 [![Django CI](https://github.com/Yanatg/ku-polls/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/Yanatg/ku-polls/actions/workflows/django.yml)
 
