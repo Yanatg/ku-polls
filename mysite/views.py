@@ -21,8 +21,8 @@ def signup(request):
         # what if form is not valid?
         # we should display a message in signup.html
         messages.error(request,
-                       'Please check username and password again. Your password'
-                       ' should not be too common.')
+                       'Please check username and password again.'
+                       ' Your password should not be too common.')
         return redirect('signup')
 
     else:
