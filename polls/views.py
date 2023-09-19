@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
         questions = get_available_questions()
         return Question.objects.filter(
             pk__in=questions
-        ).order_by('-pub_date')[:5]
+        ).order_by('-pub_date')
 
 
 class DetailView(generic.DetailView):
