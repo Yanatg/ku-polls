@@ -94,7 +94,7 @@ The application is now installed and configured. You will see the polls question
 2. Activate the virtual environment.
 3. Run tests.
     ```
-    python manage.py test
+    python manage.py test polls
     ```
 4. To deactivate the virtual environment, run `deactivate` in the terminal window where it is running.
     ```
