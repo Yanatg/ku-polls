@@ -54,7 +54,7 @@ This guide will walk you through the installation and setup process for the KU P
     ```
 10. Install Data from Data Fixture.
     ```
-    python manage.py loaddata data/polls-final.json     
+    python manage.py loaddata data/polls-no-vote.json     
     python manage.py loaddata data/users.json
     ```
     
