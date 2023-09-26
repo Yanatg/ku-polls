@@ -22,7 +22,11 @@ def signup(request):
         # we should display a message in signup.html
         messages.error(request,
                        'Please check username and password again.'
-                       ' Your password should not be too common.')
+                       ' Your password can\'t be too similar to your '
+                       'other personal information, '
+                       'must contain at least 8 characters. '
+                       'can\'t be a commonly used password.'
+                       'and can\'t be entirely numeric.')
         return redirect('signup')
 
     else:
