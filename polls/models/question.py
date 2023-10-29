@@ -11,6 +11,13 @@ class Question(models.Model):
     end_date = models.DateTimeField('date ended', default=None,
                                     null=True, blank=True)
 
+    class Meta:
+        """
+        See https://code.djangoproject.com/wiki/CookBookSplitModelsToFiles
+        """
+        db_table = "polls_question"
+        app_label = "polls"
+
     def __str__(self):
         return self.question_text
 
