@@ -8,3 +8,10 @@ class Vote(models.Model):
 
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        """
+        See https://code.djangoproject.com/wiki/CookBookSplitModelsToFiles
+        """
+        db_table = "polls_vote"
+        app_label = "polls"
